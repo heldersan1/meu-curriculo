@@ -2,25 +2,24 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Terminal, X, Menu, ChevronRight, User, Briefcase, Cpu, Wrench, Award, GraduationCap, Mail, Home } from 'lucide-react'
+import { Menu, X, User, Briefcase, Cpu, Wrench, Award, GraduationCap, Mail, Home, Shield } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface NavItem {
   id: string
   label: string
-  command: string
   icon: React.ComponentType<{ className?: string }>
 }
 
 const navItems: NavItem[] = [
-  { id: 'home', label: 'Home', command: 'cd ~/', icon: Home },
-  { id: 'experience', label: 'Experiência', command: 'cat exp.log', icon: Briefcase },
-  { id: 'skills', label: 'Skills', command: './skills.sh', icon: Cpu },
-  { id: 'specializations', label: 'Especializações', command: 'ls -la /specs', icon: Terminal },
-  { id: 'tools', label: 'Ferramentas', command: 'dpkg -l tools', icon: Wrench },
-  { id: 'certifications', label: 'Certificações', command: 'cat certs.txt', icon: Award },
-  { id: 'education', label: 'Formação', command: 'cat diploma.pdf', icon: GraduationCap },
-  { id: 'contact', label: 'Contato', command: 'mailto:helder', icon: Mail },
+  { id: 'home', label: 'Início', icon: Home },
+  { id: 'experience', label: 'Experiência', icon: Briefcase },
+  { id: 'skills', label: 'Skills', icon: Cpu },
+  { id: 'specializations', label: 'Expertise', icon: Shield },
+  { id: 'tools', label: 'Ferramentas', icon: Wrench },
+  { id: 'certifications', label: 'Certificações', icon: Award },
+  { id: 'education', label: 'Formação', icon: GraduationCap },
+  { id: 'contact', label: 'Contato', icon: Mail },
 ]
 
 export function NavMenu() {
@@ -30,11 +29,10 @@ export function NavMenu() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+      setScrolled(window.scrollY > 20)
 
-      // Detect active section
       const sections = navItems.map(item => document.getElementById(item.id))
-      const scrollPosition = window.scrollY + 100
+      const scrollPosition = window.scrollY + 120
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i]
@@ -64,50 +62,63 @@ export function NavMenu() {
 
   return (
     <>
-      {/* Desktop Navigation */}
+      {/* Desktop Navigation - Pill Style */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 hidden lg:block transition-all duration-300",
-          scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"
+          scrolled ? "bg-background/80 backdrop-blur-xl border-b border-border/50" : "bg-transparent"
         )}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            {/* Terminal Header */}
+            {/* Logo */}
             <motion.div
-              className="flex items-center gap-3 font-mono"
+              className="flex items-center gap-2.5"
               whileHover={{ scale: 1.02 }}
             >
-              <div className="flex items-center gap-2 px-3 py-1.5 bg-card border border-border rounded-md">
-                <span className="text-primary">root@helder</span>
-                <span className="text-muted-foreground">:</span>
-                <span className="text-accent">~</span>
-                <span className="text-muted-foreground">$</span>
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+                <Shield className="h-4 w-4 text-primary" />
+              </div>
+              <div>
+                <span className="font-semibold text-sm">Hélder Santana</span>
+                <span className="text-xs text-muted-foreground block -mt-0.5">Network & Security</span>
               </div>
             </motion.div>
 
-            {/* Menu Items */}
-            <div className="flex items-center gap-1 font-mono text-sm">
+            {/* Centered Menu Items - Pill Navigation */}
+            <div className="flex items-center gap-1 bg-card/50 backdrop-blur-sm border border-border/50 rounded-full px-2 py-1.5">
               {navItems.map((item) => (
                 <motion.button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={cn(
-                    "px-3 py-2 rounded-md transition-all duration-200 flex items-center gap-2 group",
+                    "px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 flex items-center gap-1.5",
                     activeSection === item.id
-                      ? "bg-primary/10 text-primary border border-primary/30"
-                      : "text-muted-foreground hover:text-foreground hover:bg-card/50"
+                      ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
+                      : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
                   )}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <item.icon className="h-4 w-4" />
-                  <span className="hidden xl:inline">{item.label}</span>
+                  <item.icon className="h-3.5 w-3.5" />
+                  <span>{item.label}</span>
                 </motion.button>
               ))}
             </div>
+
+            {/* Contact Button */}
+            <a href="#contact" onClick={() => scrollToSection('contact')}>
+              <motion.button
+                className="px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Contato
+              </motion.button>
+            </a>
           </div>
         </div>
       </motion.nav>
@@ -116,24 +127,25 @@ export function NavMenu() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 lg:hidden transition-all duration-300",
-          scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-background/80 backdrop-blur-sm"
+          scrolled ? "bg-background/95 backdrop-blur-xl border-b border-border/50" : "bg-background/80 backdrop-blur-sm"
         )}
       >
         <div className="flex items-center justify-between px-4 h-16">
-          {/* Terminal Header Mobile */}
-          <div className="flex items-center gap-2 font-mono text-sm px-3 py-1.5 bg-card border border-border rounded-md">
-            <span className="text-primary">root@helder</span>
-            <span className="text-muted-foreground">:</span>
-            <span className="text-accent">~</span>
-            <span className="text-muted-foreground">$</span>
+          {/* Logo Mobile */}
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+              <Shield className="h-4 w-4 text-primary" />
+            </div>
+            <span className="font-semibold text-sm">Hélder Santana</span>
           </div>
 
           {/* Menu Toggle */}
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 rounded-md bg-card border border-border hover:border-primary/50 transition-colors"
+            className="p-2 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors"
             whileTap={{ scale: 0.95 }}
           >
             {isOpen ? (
@@ -149,40 +161,28 @@ export function NavMenu() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 lg:hidden pt-16"
           >
             {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-background/95 backdrop-blur-md"
+            <div
+              className="absolute inset-0 bg-background/95 backdrop-blur-xl"
               onClick={() => setIsOpen(false)}
             />
 
             {/* Menu Content */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="relative m-4 p-4 bg-card border border-border rounded-xl overflow-hidden"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="relative m-4 p-6 bg-card border border-border rounded-2xl overflow-hidden"
             >
-              {/* Terminal Header */}
-              <div className="flex items-center gap-2 mb-4 pb-3 border-b border-border font-mono text-sm">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                </div>
-                <span className="text-muted-foreground ml-2">helder@portfolio:~$ ./menu.sh</span>
-              </div>
-
               {/* Menu Items */}
-              <div className="space-y-1 font-mono">
+              <div className="space-y-1">
                 {navItems.map((item, index) => (
                   <motion.button
                     key={item.id}
@@ -191,52 +191,30 @@ export function NavMenu() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
                     className={cn(
-                      "w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 text-left group",
+                      "w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 text-left",
                       activeSection === item.id
                         ? "bg-primary/10 text-primary border border-primary/30"
                         : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
                     )}
                   >
-                    <span className="text-primary/50">$</span>
-                    <item.icon className="h-4 w-4" />
-                    <span className="flex-1">{item.label}</span>
-                    <span className="text-xs opacity-50 group-hover:opacity-100 transition-opacity">
-                      {item.command}
-                    </span>
-                    <ChevronRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <item.icon className="h-5 w-5" />
+                    <span className="font-medium">{item.label}</span>
                   </motion.button>
                 ))}
               </div>
 
-              {/* Terminal Footer */}
-              <div className="mt-4 pt-3 border-t border-border font-mono text-xs text-muted-foreground">
-                <span className="text-primary">helder@portfolio</span>
-                <span className="text-muted-foreground">:</span>
-                <span className="text-accent">~</span>
-                <span className="text-muted-foreground">$ _</span>
-                <span className="animate-pulse">▊</span>
+              {/* Contact Button Mobile */}
+              <div className="mt-4 pt-4 border-t border-border">
+                <a href="mailto:helder.souza@proton.me" className="block">
+                  <button className="w-full py-3 rounded-xl bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors">
+                    Entre em Contato
+                  </button>
+                </a>
               </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Desktop Terminal Style Sidebar (Optional - shows on hover) */}
-      <motion.div
-        initial={{ x: -300 }}
-        animate={{ x: 0 }}
-        className="fixed left-0 top-1/2 -translate-y-1/2 z-40 hidden xl:block"
-      >
-        <motion.div
-          className="relative"
-          whileHover={{ x: 0 }}
-        >
-          {/* Collapsed State */}
-          <div className="absolute left-0 top-0 bottom-0 w-10 bg-card border border-border border-l-0 rounded-r-lg flex items-center justify-center cursor-pointer hover:bg-primary/5 transition-colors">
-            <Terminal className="h-5 w-5 text-primary rotate-90" />
-          </div>
-        </motion.div>
-      </motion.div>
     </>
   )
 }

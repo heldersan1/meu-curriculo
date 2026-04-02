@@ -60,42 +60,42 @@ const skills = [
   { name: 'Linux Administration', level: 85, icon: Terminal },
 ]
 
-// Especializações detalhadas
+// Áreas de Atuação
 const specializations = [
   {
     title: 'Firewall Administration',
     icon: Flame,
-    description: 'Administração avançada de firewalls enterprise com implementação de políticas de segurança, alta disponibilidade e proteção contra ameaças.',
+    description: 'Atuação em administração de firewalls enterprise com implementação de políticas de segurança, alta disponibilidade e proteção contra ameaças.',
     features: ['FortiGate', 'Sophos XG', 'Palo Alto', 'Cisco ASA', 'SonicWall', 'pfSense/OPNsense']
   },
   {
     title: 'Network Infrastructure',
     icon: Network,
-    description: 'Design, implementação e manutenção de infraestrutura de rede corporativa com foco em performance, redundância e segurança.',
+    description: 'Atuação em design, implementação e manutenção de infraestrutura de rede corporativa com foco em performance, redundância e segurança.',
     features: ['TCP/IP', 'VPN IPSec/SSL', 'SD-WAN', 'OSPF/BGP', 'VLAN', 'NAT/QoS']
   },
   {
     title: 'Switching & Wireless',
     icon: Server,
-    description: 'Gerenciamento de switches L2/L3 e infraestrutura wireless empresarial para ambientes de alta disponibilidade.',
+    description: 'Atuação em gerenciamento de switches L2/L3 e infraestrutura wireless empresarial para ambientes de alta disponibilidade.',
     features: ['Cisco', 'HPE/Aruba', 'Datacom', 'Dell', 'Ubiquiti', 'Wireless Controllers']
   },
   {
     title: 'Security Operations',
     icon: Shield,
-    description: 'Operações de segurança defensiva incluindo monitoramento SIEM, análise de vulnerabilidades e resposta a incidentes.',
+    description: 'Atuação em operações de segurança defensiva incluindo monitoramento SIEM, análise de vulnerabilidades e resposta a incidentes.',
     features: ['Wazuh SIEM', 'Nessus', 'Splunk', 'EDR', 'IPS/IDS', 'Threat Hunting']
   },
   {
     title: 'Monitoring & Observability',
     icon: Eye,
-    description: 'Implementação de soluções de monitoramento para visibilidade completa da infraestrutura de rede e sistemas.',
+    description: 'Atuação em implementação de soluções de monitoramento para visibilidade completa da infraestrutura de rede e sistemas.',
     features: ['Zabbix', 'Grafana', 'Splunk', 'Cisco Prime', 'PRTG', 'Alerting']
   },
   {
     title: 'Infrastructure & Automation',
     icon: Cpu,
-    description: 'Administração de servidores e automação de tarefas operacionais para maior eficiência e padronização.',
+    description: 'Atuação em administração de servidores e automação de tarefas operacionais para maior eficiência e padronização.',
     features: ['Linux (RHEL/Debian)', 'Hyper-V', 'VMware', 'Python', 'Scripting', 'Documentation']
   }
 ]
@@ -223,25 +223,19 @@ export default function Home() {
 
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-0">
-        {/* Background Image with Overlay */}
+        {/* Background Image With Overlay */}
         <div className="absolute inset-0 z-0">
           <img
             src="/hero-bg.png"
             alt="Cybersecurity Background"
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-15"
+            loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/90 to-background" />
         </div>
 
         {/* Grid Pattern Overlay */}
-        <div className="absolute inset-0 grid-pattern z-0" />
-
-        {/* Animated Scan Line */}
-        <motion.div
-          className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent z-10 opacity-20"
-          animate={{ y: ['0vh', '100vh'] }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-        />
+        <div className="absolute inset-0 clean-grid z-0" />
 
         <div className="relative z-20 container mx-auto px-4 py-32">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -258,7 +252,7 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
                 className="mb-6"
               >
-                <Badge variant="outline" className="px-4 py-2 text-primary border-primary/50 bg-primary/10">
+                <Badge className="px-4 py-2 bg-primary/10 text-primary border-primary/20 font-medium">
                   <Terminal className="w-4 h-4 mr-2" />
                   Network & Security Analyst
                 </Badge>
@@ -271,7 +265,7 @@ export default function Home() {
                 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
               >
                 <span className="text-foreground">Hélder </span>
-                <span className="text-primary text-glow-green">Santana</span>
+                <span className="text-primary">Santana</span>
               </motion.h1>
 
               <motion.p
@@ -289,7 +283,7 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-base text-muted-foreground max-w-xl mb-8"
               >
-                Especialista em administração de firewalls FortiGate, Sophos, Cisco ASA, além de switches Cisco, HPE, Aruba e Datacom. 
+                Atuação em administração de firewalls FortiGate, Sophos, Cisco ASA, além de switches Cisco, HPE, Aruba e Datacom. 
                 Experiência em ambientes corporativos e suporte global com foco em troubleshooting, VPNs, SD-WAN e segurança defensiva.
               </motion.p>
 
@@ -313,13 +307,13 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+                className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
               >
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 glow-green font-semibold px-8">
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8">
                   <Mail className="mr-2 h-5 w-5" />
                   Entre em Contato
                 </Button>
-                <Button size="lg" variant="outline" className="border-accent/50 text-accent hover:bg-accent/10 font-semibold px-8">
+                <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-secondary font-semibold px-8">
                   <Linkedin className="mr-2 h-5 w-5" />
                   LinkedIn
                 </Button>
@@ -333,7 +327,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="hidden lg:block"
             >
-              <Card className="bg-card/80 backdrop-blur-sm border-border glow-cyan">
+              <Card className="bg-card/80 backdrop-blur-sm border-border">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-xl flex items-center gap-2">
                     <Shield className="h-5 w-5 text-primary" />
@@ -345,32 +339,32 @@ export default function Home() {
                     <div>
                       <p className="text-sm font-medium text-muted-foreground mb-2">Firewalls</p>
                       <div className="flex flex-wrap gap-2">
-                        <Badge variant="secondary" className="bg-primary/10 text-primary">FortiGate</Badge>
-                        <Badge variant="secondary" className="bg-primary/10 text-primary">Sophos XG</Badge>
-                        <Badge variant="secondary" className="bg-primary/10 text-primary">Palo Alto</Badge>
-                        <Badge variant="secondary" className="bg-primary/10 text-primary">Cisco ASA</Badge>
-                        <Badge variant="secondary" className="bg-primary/10 text-primary">SonicWall</Badge>
-                        <Badge variant="secondary" className="bg-primary/10 text-primary">pfSense</Badge>
+                        <Badge className="bg-secondary text-secondary-foreground">FortiGate</Badge>
+                        <Badge className="bg-secondary text-secondary-foreground">Sophos XG</Badge>
+                        <Badge className="bg-secondary text-secondary-foreground">Palo Alto</Badge>
+                        <Badge className="bg-secondary text-secondary-foreground">Cisco ASA</Badge>
+                        <Badge className="bg-secondary text-secondary-foreground">SonicWall</Badge>
+                        <Badge className="bg-secondary text-secondary-foreground">pfSense</Badge>
                       </div>
                     </div>
                     <div>
                       <p className="text-sm font-medium text-muted-foreground mb-2">Redes</p>
                       <div className="flex flex-wrap gap-2">
-                        <Badge variant="secondary" className="bg-accent/10 text-accent">VPN IPSec/SSL</Badge>
-                        <Badge variant="secondary" className="bg-accent/10 text-accent">SD-WAN</Badge>
-                        <Badge variant="secondary" className="bg-accent/10 text-accent">OSPF/BGP</Badge>
-                        <Badge variant="secondary" className="bg-accent/10 text-accent">VLAN</Badge>
-                        <Badge variant="secondary" className="bg-accent/10 text-accent">HA</Badge>
+                        <Badge className="bg-secondary text-secondary-foreground">VPN IPSec/SSL</Badge>
+                        <Badge className="bg-secondary text-secondary-foreground">SD-WAN</Badge>
+                        <Badge className="bg-secondary text-secondary-foreground">OSPF/BGP</Badge>
+                        <Badge className="bg-secondary text-secondary-foreground">VLAN</Badge>
+                        <Badge className="bg-secondary text-secondary-foreground">HA</Badge>
                       </div>
                     </div>
                     <div>
                       <p className="text-sm font-medium text-muted-foreground mb-2">Monitoramento</p>
                       <div className="flex flex-wrap gap-2">
-                        <Badge variant="secondary" className="bg-secondary">Zabbix</Badge>
-                        <Badge variant="secondary" className="bg-secondary">Grafana</Badge>
-                        <Badge variant="secondary" className="bg-secondary">Splunk</Badge>
-                        <Badge variant="secondary" className="bg-secondary">Wazuh</Badge>
-                        <Badge variant="secondary" className="bg-secondary">Nessus</Badge>
+                        <Badge className="bg-secondary text-secondary-foreground">Zabbix</Badge>
+                        <Badge className="bg-secondary text-secondary-foreground">Grafana</Badge>
+                        <Badge className="bg-secondary text-secondary-foreground">Splunk</Badge>
+                        <Badge className="bg-secondary text-secondary-foreground">Wazuh</Badge>
+                        <Badge className="bg-secondary text-secondary-foreground">Nessus</Badge>
                       </div>
                     </div>
                   </div>
@@ -391,7 +385,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 relative border-y border-border bg-card/30">
+      <section className="py-16 relative border-y border-border bg-card/50">
         <div className="container mx-auto px-4">
           <motion.div
             initial="initial"
@@ -406,7 +400,7 @@ export default function Home() {
                 variants={fadeInUp}
                 className="text-center group"
               >
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary mb-3 group-hover:bg-primary/20 transition-colors">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary mb-3 group-hover:bg-primary/15 transition-colors">
                   <stat.icon className="h-6 w-6" />
                 </div>
                 <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">
@@ -451,7 +445,7 @@ export default function Home() {
                 key={exp.company}
                 variants={fadeInUp}
               >
-                <Card className="bg-card/80 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-300 overflow-hidden">
+                <Card className="bg-card border-border hover:border-primary/30 transition-all duration-200 card-hover overflow-hidden">
                   <CardHeader className="pb-2">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                       <div>
@@ -524,15 +518,15 @@ export default function Home() {
               <motion.div
                 key={skill.name}
                 variants={fadeInUp}
-                className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 group"
+                className="bg-card border border-border rounded-xl p-6 hover:border-primary/30 transition-all duration-200 card-hover"
               >
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
+                  <div className="p-3 rounded-lg bg-primary/10 text-primary">
                     <skill.icon className="h-6 w-6" />
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-lg">{skill.name}</h3>
-                    <p className="text-sm text-muted-foreground">{skill.level}% Proficiency</p>
+                    <p className="text-sm text-muted-foreground">{skill.level}%</p>
                   </div>
                 </div>
                 <div className="relative">
@@ -559,7 +553,7 @@ export default function Home() {
             className="text-center mb-16"
           >
             <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-bold mb-4">
-              Áreas de <span className="text-accent">Especialização</span>
+              Áreas de <span className="text-accent">Atuação</span>
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Foco principal em infraestrutura de rede segura e operações de segurança defensiva.
@@ -578,9 +572,9 @@ export default function Home() {
                 key={spec.title}
                 variants={fadeInUp}
               >
-                <Card className="h-full bg-card/80 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-300 group overflow-hidden">
+                <Card className="h-full bg-card border-border hover:border-primary/30 transition-all duration-200 card-hover">
                   <CardHeader>
-                    <div className="p-3 rounded-lg bg-accent/10 text-accent w-fit mb-4 group-hover:bg-accent/20 transition-colors">
+                    <div className="p-3 rounded-lg bg-primary/10 text-primary w-fit mb-4">
                       <spec.icon className="h-8 w-8" />
                     </div>
                     <CardTitle className="text-xl">{spec.title}</CardTitle>
@@ -591,7 +585,7 @@ export default function Home() {
                   <CardContent>
                     <div className="flex flex-wrap gap-2">
                       {spec.features.map((feature) => (
-                        <Badge key={feature} variant="secondary" className="bg-secondary/50 hover:bg-secondary text-xs">
+                        <Badge key={feature} className="bg-secondary text-secondary-foreground text-xs">
                           {feature}
                         </Badge>
                       ))}
@@ -627,16 +621,16 @@ export default function Home() {
             whileInView="animate"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto"
+            className="flex flex-wrap justify-center gap-3"
           >
             {tools.map((tool, index) => (
               <motion.div
                 key={tool.name}
                 variants={fadeInUp}
-                className="flex items-center gap-2 px-6 py-3 bg-card border border-border rounded-full hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 cursor-default group"
+                className="flex items-center gap-2 px-5 py-2.5 bg-card border border-border rounded-full hover:border-primary/30 hover:bg-secondary/50 transition-all duration-200 cursor-default"
               >
-                <tool.icon className="h-5 w-5 text-primary group-hover:text-glow-green" />
-                <span className="font-medium">{tool.name}</span>
+                <tool.icon className="h-5 w-5 text-primary" />
+                <span className="font-medium text-sm">{tool.name}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -678,14 +672,14 @@ export default function Home() {
                   <motion.div
                     key={cert.name}
                     variants={fadeInUp}
-                    className="bg-card border border-border rounded-xl p-4 hover:border-accent/50 transition-all duration-300"
+                    className="bg-card border border-border rounded-xl p-4 hover:border-primary/30 transition-all duration-200 card-hover"
                   >
                     <div className="flex items-start justify-between">
                       <div>
                         <h4 className="font-semibold">{cert.name}</h4>
                         <p className="text-sm text-muted-foreground">{cert.issuer}</p>
                       </div>
-                      <Badge variant="outline" className="text-xs border-primary/50 text-primary">
+                      <Badge className="text-xs bg-secondary text-secondary-foreground">
                         {cert.status}
                       </Badge>
                     </div>
@@ -710,7 +704,7 @@ export default function Home() {
                   <motion.div
                     key={course.name}
                     variants={fadeInUp}
-                    className="bg-card border border-border rounded-xl p-4 hover:border-primary/50 transition-all duration-300"
+                    className="bg-card border border-border rounded-xl p-4 hover:border-primary/30 transition-all duration-200 card-hover"
                   >
                     <div className="flex items-start justify-between">
                       <div>
@@ -718,8 +712,7 @@ export default function Home() {
                         <p className="text-xs text-muted-foreground">{course.platform}</p>
                       </div>
                       <Badge 
-                        variant={course.status === 'Em andamento' ? 'default' : 'secondary'} 
-                        className={`text-xs ${course.status === 'Em andamento' ? 'bg-primary/20 text-primary' : ''}`}
+                        className={`text-xs ${course.status === 'Em andamento' ? 'bg-primary/10 text-primary' : 'bg-secondary text-secondary-foreground'}`}
                       >
                         {course.status}
                       </Badge>
@@ -748,20 +741,20 @@ export default function Home() {
               </h2>
             </motion.div>
 
-            <motion.div
-              variants={fadeInUp}
-              className="bg-card border border-border rounded-2xl p-8 text-center"
-            >
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                <FileText className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Tecnólogo em Segurança da Informação</h3>
-              <p className="text-muted-foreground mb-2">UNINOVE - Universidade Nove de Julho</p>
-              <p className="text-sm text-muted-foreground mb-4">São Paulo - SP | 2016 - 2019</p>
-              <Badge variant="outline" className="border-primary/50 text-primary">
-                Concluído
-              </Badge>
-            </motion.div>
+              <motion.div
+                variants={fadeInUp}
+                className="bg-card border border-border rounded-2xl p-8 text-center"
+              >
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+                  <FileText className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Tecnólogo em Segurança da Informação</h3>
+                <p className="text-muted-foreground mb-2">UNINOVE - Universidade Nove de Julho</p>
+                <p className="text-sm text-muted-foreground mb-4">São Paulo - SP | 2016 - 2019</p>
+                <Badge className="bg-secondary text-secondary-foreground">
+                  Concluído
+                </Badge>
+              </motion.div>
           </motion.div>
         </div>
       </section>
@@ -792,7 +785,7 @@ export default function Home() {
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <a
                   href="mailto:helder.souza@proton.me"
-                  className="flex items-center gap-4 p-4 bg-primary/5 border border-primary/20 rounded-xl hover:bg-primary/10 transition-colors group"
+                  className="flex items-center gap-4 p-4 bg-secondary rounded-xl hover:bg-primary/5 transition-colors group"
                 >
                   <div className="p-3 rounded-lg bg-primary/10 text-primary">
                     <Mail className="h-6 w-6" />
@@ -807,7 +800,7 @@ export default function Home() {
                   href="https://wa.me/5511988700322"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 bg-accent/5 border border-accent/20 rounded-xl hover:bg-accent/10 transition-colors group"
+                  className="flex items-center gap-4 p-4 bg-secondary rounded-xl hover:bg-accent/5 transition-colors group"
                 >
                   <div className="p-3 rounded-lg bg-accent/10 text-accent">
                     <Phone className="h-6 w-6" />

@@ -14,24 +14,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Z.ai Code Scaffold - AI-Powered Development",
-  description: "Modern Next.js scaffold optimized for AI-powered development with Z.ai. Built with TypeScript, Tailwind CSS, and shadcn/ui.",
-  keywords: ["Z.ai", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "AI development", "React"],
-  authors: [{ name: "Z.ai Team" }],
+  title: "Hélder Santana | Analista de Redes e Segurança",
+  description: "Currículo profissional de Hélder Santana — Analista de Redes e Segurança da Informação com 7+ anos de experiência em infraestrutura de rede, firewalls, VPNs e segurança defensiva.",
+  keywords: ["Hélder Santana", "Analista de Redes", "Segurança da Informação", "FortiGate", "Network Security", "Firewall", "VPN", "SD-WAN"],
+  authors: [{ name: "Hélder Santana" }],
   icons: {
-    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+    icon: "/logo.svg",
   },
   openGraph: {
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
-    url: "https://chat.z.ai",
-    siteName: "Z.ai",
+    title: "Hélder Santana | Analista de Redes e Segurança",
+    description: "Analista de Redes e Segurança com 7+ anos de experiência em infraestrutura corporativa.",
     type: "website",
+    locale: "pt_BR",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
+    title: "Hélder Santana | Analista de Redes e Segurança",
+    description: "Analista de Redes e Segurança com 7+ anos de experiência.",
   },
 };
 
@@ -41,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
